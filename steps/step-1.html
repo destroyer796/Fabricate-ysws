@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Step 1 — 3D Printer Program</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600&family=Space+Mono&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="guide-layout">
+
+    <nav class="sidebar" id="sidebar"></nav>
+
+    <main class="guide-content" id="content"></main>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script>
+    // load sidebar
+    fetch('/sidebar.html')
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById('sidebar').innerHTML = html;
+
+        // auto highlight current page
+        const currentPage = window.location.pathname.split('/').pop();
+        document.querySelectorAll('.sidebar-link').forEach(link => {
+          if (link.getAttribute('href') === currentPage) {
+            link.classList.add('active');
+          }
+        });
+      });
+
+    // load markdown content
+    const currentPage = window.location.pathname.split('/').pop();
+    const mdFile = currentPage.replace('.html', '.md');
+    fetch('/steps/' + mdFile)
+      .then(res => res.text())
+      .then(md => {
+        document.getElementById('content').innerHTML = marked.parse(md);
+      });
+  </script>
+</body>
+</html>
