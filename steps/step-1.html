@@ -8,23 +8,32 @@
   <link rel="stylesheet" href="/style.css" />
 </head>
 <body>
-  <div class="guide-layout">
+    <header class="topbar">
+        <a href="/index.html" class="topbar-logo">Fabricate</a>
+        <nav class="topbar-nav">
+            <a href="/faq.html" class="topbar-link">FAQ</a>
+            <a href="/shop.html" class="topbar-link">Shop</a>
+            <a href="/rewards.html" class="topbar-link">Rewards</a>
+        </nav>
+    </header>
+
+    <div class="guide-layout">
 
     <nav class="sidebar" id="sidebar"></nav>
 
     <main class="guide-content" id="content"></main>
 
-  </div>
+    </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-  <script>
-    // load sidebar
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script>
+    /* load sidebar */
     fetch('/sidebar.html')
       .then(res => res.text())
       .then(html => {
         document.getElementById('sidebar').innerHTML = html;
 
-        // auto highlight current page
+        /* auto highlight current page */
         const currentPage = window.location.pathname.split('/').pop();
         document.querySelectorAll('.sidebar-link').forEach(link => {
           if (link.getAttribute('href') === currentPage) {
@@ -33,7 +42,7 @@
         });
       });
 
-    // load markdown content
+    /* load markdown content */
     const currentPage = window.location.pathname.split('/').pop();
     const mdFile = currentPage.replace('.html', '.md');
     fetch('/steps/' + mdFile)

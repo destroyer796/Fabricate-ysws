@@ -123,11 +123,53 @@ h1 {
   font-size: 1.2rem;
 }
 
+/* Topbar */
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  height: 56px;
+  background: var(--surface-color);
+  border-bottom: 1px solid #2a2a2a;
+}
+
+.topbar-logo {
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  color: var(--primary-color);
+  text-decoration: none;
+  letter-spacing: 0.05em;
+}
+
+.topbar-nav {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.topbar-link {
+  color: var(--muted-color);
+  text-decoration: none;
+  font-size: 0.9rem;
+  padding: 0.4rem 0.75rem;
+  border-radius: 4px;
+  transition: color 0.15s, background 0.15s;
+}
+
+.topbar-link:hover {
+  color: var(--text-color);
+  background: var(--background-color);
+}
+
 /* Guide Layout */
 
 .guide-layout {
     display: flex;
-    min-height: 100vh;
+    min-height: calc(100vh - 56px);
 }
 
 .sidebar {
@@ -138,21 +180,9 @@ h1 {
     flex-direction: column;
     gap: 0.4rem;
     position: sticky;
-    top: 0;
-    height: 100vh;
+    top: 56px;
+    height: calc(100vh - 56px);
     flex-shrink: 0;
-}
-
-.sidebar-brand {
-    color: var(--text-color);
-    text-decoration: none;
-    font-size: 1.3rem;
-    font-weight: 1000;
-    margin-bottom: 1rem;
-}
-
-.sidebar-brand:hover {
-    color: var(--text-color);
 }
 
 .sidebar-label {
