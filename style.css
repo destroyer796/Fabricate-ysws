@@ -21,7 +21,6 @@ body {
 }
 
 /* Landing Page */
-
 .landing {
     min-height: 100vh;
     display: flex;
@@ -257,8 +256,8 @@ h1 {
 }
 
 .step {
-    margin-bottom: 4rem;
-    padding-bottom: 4rem;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
     border-bottom: 1px solid var(--surface-color);
 }
 
@@ -279,8 +278,8 @@ h1 {
 .guide-content h2,
 .guide-content h3 {
     color: var(--primary-color);
-    margin-bottom: 1rem;
-    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+    margin-top: 1.5rem;
 }
 
 .guide-content p {

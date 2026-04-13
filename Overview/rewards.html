@@ -42,7 +42,7 @@
     /* load markdown content */
     const currentPage = window.location.pathname.split('/').pop();
     const mdFile = currentPage.replace('.html', '.md');
-    fetch('/steps/' + mdFile)
+    fetch('/Overview/' + mdFile)
     .then(res => res.text())
     .then(md => {
         document.getElementById('content').innerHTML = marked.parse(md);
