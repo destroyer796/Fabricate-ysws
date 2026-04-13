@@ -21,7 +21,7 @@
         <nav class="sidebar" id="sidebar"></nav>
         <main class="guide-content" id="content"></main>
     </div>
-    
+
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script>
 
@@ -47,6 +47,18 @@
     .then(md => {
         document.getElementById('content').innerHTML = marked.parse(md);
     });
+    </script>
+
+    <script>
+        document.addEventListener('click', function(e) {
+        const btn = e.target.closest('.sidebar-section');
+        if (!btn) return;
+            const targetId = btn.getAttribute('data-target');
+            const group = document.getElementById(targetId);
+        if (!group) return;
+            btn.classList.toggle('collapsed');
+            group.classList.toggle('collapsed');
+        });
     </script>
 </body>
 </html>

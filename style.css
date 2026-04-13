@@ -166,40 +166,33 @@ h1 {
 }
 
 /* Guide Layout */
-
 .guide-layout {
     display: flex;
-    min-height: calc(100vh - 56px);
+    position: fixed;
+    top: 56px;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
 
 .sidebar {
     width: 200px;
     background: var(--surface-color);
-    padding: 2rem 1.25rem;
+    padding: 0.5rem 0.5rem;
     display: flex;
     flex-direction: column;
     gap: 0.4rem;
-    position: sticky;
-    top: 56px;
-    height: calc(100vh - 56px);
+    overflow-y: auto;
+    overflow-x: hidden;
     flex-shrink: 0;
-}
-
-.sidebar-label {
-    /* font-family: var(--font-mono); */
-    color: var(--text-color);
-    font-size: 0.9rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-bottom: 0.3rem;
+    min-height: 0;
 }
 
 .sidebar-link {
     color: var(--muted-color);
     text-decoration: none;
     font-size: 0.95rem;
-    padding: 0.4rem 0.75rem;
+    padding: 0.3rem 0.75rem;
     border-radius: 4px;
     transition: background 0.15s, color 0.15s;
 }
@@ -209,10 +202,58 @@ h1 {
     color: var(--primary-color);
 }
 
+.sidebar-section {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.075em;
+    padding: 0.3rem 0rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    width: 100%;
+    text-align: left;
+    margin-top: 0.5rem;
+    transition: color 0.15s;
+}
+
+.sidebar-section::before {
+    content: '▾';
+    display: inline-block;
+    transition: transform 0.2s;
+}
+
+.sidebar-section.collapsed::before {
+    transform: rotate(-90deg);
+}
+
+.sidebar-section:hover {
+    color: var(--text-color);
+}
+
+.sidebar-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    max-height: 1000px;
+}
+
+.sidebar-group.collapsed {
+    max-height: 0;
+}
+
 .guide-content {
     flex: 1;
-    padding: 3rem;
+    padding: 2rem;
     max-width: 800px;
+    overflow-y: auto;
+    min-height: 0;
 }
 
 .step {
