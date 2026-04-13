@@ -23,39 +23,30 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-<script>
+    <script>
 
-/* load sidebar */
-fetch('/sidebar.html')
-  .then(res => {
-    if (!res.ok) throw new Error('sidebar fetch failed: ' + res.status);
-    return res.text();
-  })
-  .then(html => {
-    document.getElementById('sidebar').innerHTML = html;
-    const currentPage = window.location.pathname.split('/').pop();
-    document.querySelectorAll('.sidebar-link').forEach(link => {
-      if (link.getAttribute('href') === currentPage) {
-        link.classList.add('active');
-      }
+    /* load sidebar */
+    fetch('/sidebar.html')
+    .then(res => res.text())
+    .then(html => {
+        document.getElementById('sidebar').innerHTML = html;
+        /* auto highlight current page */
+        const currentPage = window.location.pathname.split('/').pop();
+        document.querySelectorAll('.sidebar-link').forEach(link => {
+            if (link.getAttribute('href') === currentPage) {
+                link.classList.add('active');
+            }
+        });
     });
-  })
-  .catch(err => console.error(err));
 
-/* load markdown content */
-const currentPage = window.location.pathname.split('/').pop();
-const mdFile = currentPage.replace('.html', '.md');
-fetch('/steps/' + mdFile)
-  .then(res => {
-    if (!res.ok) throw new Error('markdown fetch failed: ' + res.status);
-    return res.text();
-  })
-  .then(md => {
-    document.getElementById('content').innerHTML = marked.parse(md);
-  })
-  .catch(err => console.error(err));
-
-</script>
+    /* load markdown content */
+    const currentPage = window.location.pathname.split('/').pop();
+    const mdFile = currentPage.replace('.html', '.md');
+    fetch('/steps/' + mdFile)
+    .then(res => res.text())
+    .then(md => {
+        document.getElementById('content').innerHTML = marked.parse(md);
+    });
     </script>
 
     <script>
