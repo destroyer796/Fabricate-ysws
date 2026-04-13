@@ -77,6 +77,52 @@ h1 {
     opacity: 0.85;
 }
 
+/* Projects Section */
+
+.projects {
+  padding: 4rem 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.projects-title {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  margin-bottom: 2rem;
+}
+
+.projects-grid {
+  display: flex;
+  gap: 2rem;
+}
+
+.project-card {
+  flex: 1;
+  text-decoration: none;
+  color: var(--muted-color);
+  background: var(--surface-color);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  opacity: 0.9;
+}
+
+.project-card img {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  display: block;
+}
+
+.project-card p {
+  padding: 0.75rem 1rem;
+  font-size: 1.2rem;
+}
+
 /* Guide Layout */
 
 .guide-layout {
@@ -85,7 +131,7 @@ h1 {
 }
 
 .sidebar {
-    width: 220px;
+    width: 200px;
     background: var(--surface-color);
     padding: 2rem 1.25rem;
     display: flex;
@@ -98,10 +144,11 @@ h1 {
 }
 
 .sidebar-brand {
-    color: var(--muted-color);
+    color: var(--text-color);
     text-decoration: none;
-    font-size: 0.9rem;
-    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+    font-weight: 1000;
+    margin-bottom: 1rem;
 }
 
 .sidebar-brand:hover {
@@ -109,12 +156,13 @@ h1 {
 }
 
 .sidebar-label {
-    font-family: var(--font-mono);
-    color: var(--muted-color);
-    font-size: 0.7rem;
+    /* font-family: var(--font-mono); */
+    color: var(--text-color);
+    font-size: 0.9rem;
+    font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.3rem;
 }
 
 .sidebar-link {
@@ -165,7 +213,7 @@ h1 {
 }
 
 .guide-content p {
-  color: var(--muted);
+  color: var(--text-color);
   line-height: 1.7;
   margin-bottom: 1rem;
 }
